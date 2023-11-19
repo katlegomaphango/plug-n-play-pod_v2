@@ -1,6 +1,8 @@
-import { AppBar, Avatar, Toolbar, Typography, styled } from '@mui/material'
+import { AppBar, Avatar, Button, Toolbar, Typography, styled } from '@mui/material'
 import logo from '../assets/meta/logo.png'
 import { theme } from '../theme'
+import { Login } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 const AppToolbar = styled(Toolbar)({
     background: theme.palette.primary.dark,
@@ -15,7 +17,14 @@ const LogoText = styled(Typography)({
     marginLeft: '0.5rem'
 })
 
+const LogButton = styled(Button)({
+    borderRadius: '0.3rem',
+    border: '1px solid',
+    color: theme.palette.primary.contrastText
+})
+
 const Navbar = () => {
+    const navigate = useNavigate()
     return (
         <>
             <AppBar position='sticky'>
@@ -26,6 +35,10 @@ const Navbar = () => {
                             Plug 'n Play
                         </LogoText>
                     </Toolbar>
+                    <LogButton variant='outlined' onClick={() => {navigate('/')}}>
+                        <Login />
+                        <Typography ml={1} sx={{display: {xs: 'none', sm: 'block'}}}>Login</Typography>
+                    </LogButton>
                 </AppToolbar>
             </AppBar>
         </>
